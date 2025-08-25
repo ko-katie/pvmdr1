@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Paths and settings
-WORKING_DIR="/local/mpileup_dir/"  # Directory for running script
+WORKING_DIR="/path/to/mpileup_dir/"  # Directory for running script
 
 # Create directory
 mkdir -p "$WORKING_DIR" 
 
 # Get the sample line for the slurm array task ID
 #samples_to_run.txt is formatted as a tab-delimited file with the sample name in the first column and the path to the bam file in the second column
-SAMPLE_LINE=$(sed "${SLURM_ARRAY_TASK_ID}q;d" /local/mpileup_dir/samples_to_run.txt)
+SAMPLE_LINE=$(sed "${SLURM_ARRAY_TASK_ID}q;d" /path/to/mpileup_dir/samples_to_run.txt)
 
 echo "Processing sample: $SAMPLE_LINE"
 
