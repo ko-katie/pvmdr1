@@ -8,7 +8,7 @@ _Screen WGS data from_ P. vivax _patient samples for deletions and tandem duplic
 
   Peform analysis by running: python3 local_wgs_rearrangement_search.py /path/to/working_directory/ /path/to/list_of_r1_fastqs.txt /path/to/list_of_r2_fastqs.txt\
   **/path/to/working_directory/** is the path to the directory where files should be outputted\
-  **/path/to/list_of_r1_fastqs.txt** and **/path/to/list_of_r2_fastqs.txt** should be text files providing the path to fastq.gz files for R1 and R2, respectively, for each sample. Each file should be on a new line, and the samples should be in the same order in both files.\
+  **/path/to/list_of_r1_fastqs.txt** and **/path/to/list_of_r2_fastqs.txt** should be text files providing the path to fastq.gz files for R1 and R2, respectively, for each sample. Each file should be on a new line, and the samples should be in the same order in both files.
 
 **Screening for _mdr1_ rearrangements from MalariaGEN PV4 Dataset**\
 _Screen 60kb region surrounding_ mdr1 _in samples from MalariaGEN PV4 dataset_
@@ -17,7 +17,7 @@ _Screen 60kb region surrounding_ mdr1 _in samples from MalariaGEN PV4 dataset_
 
   Peform analysis by running: python3 sra_wgs_rearrangement_search.py /path/to/working_directory/ /path/to/list_of_r1_fastqs.txt /path/to/list_of_r2_fastqs.txt\
   **/path/to/working_directory/** is the path to the directory where files should be outputted\
-  **/path/to/list_of_r1_fastqs.txt** and **/path/to/list_of_r2_fastqs.txt** should be text files providing the path to fastq.gz files for R1 and R2, respectively, for each sample. Each file should be on a new line, and the samples should be in the same order in both files.\
+  **/path/to/list_of_r1_fastqs.txt** and **/path/to/list_of_r2_fastqs.txt** should be text files providing the path to fastq.gz files for R1 and R2, respectively, for each sample. Each file should be on a new line, and the samples should be in the same order in both files.
 
 **GATK Analysis**\
 _Calculate fws to determine clonality of samples based on WGS_
@@ -31,7 +31,7 @@ _Calculate fws to determine clonality of samples based on WGS_
     Change fix_bam_format_slurm.sh lines 4, 5, 6, and 7 to desired paths to SLURM outputs and line 8 to path to a list of bam files to be run\
       Bam file should contain one path on each line\
     Change /path/to/sample_map.txt on line 4 of perform_gatk_analysis.sh to sample map as outlined [here](https://gatk.broadinstitute.org/hc/en-us/articles/360036883491-GenomicsDBImport), then run: bash perform_gatk_analysis.sh\
-    Change paths in moimix_analysis.sh to reflect those outputted by perform_gatk_analysis.sh and run to obtain fws values\
+    Change paths in moimix_analysis.sh to reflect those outputted by perform_gatk_analysis.sh and run to obtain fws values
 
 **Generate mdr1 coding sequence consensus**\
 _Get consensus sequence of mdr1 coding sequence from WGS of samples_
@@ -42,4 +42,4 @@ _Get consensus sequence of mdr1 coding sequence from WGS of samples_
     Perform analysis by:\
     Change run_mpileup_mdr1_slurm.slurm lines 3 and 4 to desired paths to SLURM output and line 10 to downloaded location of mpileup_mdr1_slurm.sh\
     Change mpileup_mdr1_slurm.sh line 4 to include path to working directory and line 11 to include path to input file\
-    Input file should be a tab delimited file with each line containing one sample, sample name in first column and path to sample bam file in second column\
+    Input file should be a tab delimited file with each line containing one sample, sample name in first column and path to sample bam file in second column
