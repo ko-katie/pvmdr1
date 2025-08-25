@@ -1,7 +1,15 @@
 # pvmdr1
-Code used for characterizing pvmdr1 in manuscript: A common DNA deletion altering the 3’UTR of mdr1 is associated with reduced mefloquine susceptibility in Plasmodium vivax parasites from Cambodian patients
+Code used for characterizing pvmdr1 in manuscript: A common DNA deletion altering the 3’UTR of _mdr1_ is associated with reduced mefloquine susceptibility in _Plasmodium vivax_ parasites from Cambodian patients
 
-**
+**Screening for deletions and tandem duplications in Cambodian patient samples**
+_Screen WGS data from_ P. vivax _patient samples for deletions and tandem duplications of at least 1kb_
+- local_wgs_rearrangement_search.py: Gets paths to paired end sequencing data, maps samples to P01 reference genome using Hisat2, and runs local_wgs_flag_search_by_window_final_local.py on resulting sam file to identify possible deletions and duplications
+- local_wgs_flag_search_by_window.py: Iterates through sam file from local_wgs_rearrangement_search.py and identifies reads with appropriate flag and insert size that are indicative of deletions or tandem duplications
+
+**Screening for _mdr1_ rearrangements from MalariaGEN PV4 Dataset**
+_Screen 60kb region surrounding_ mdr1 _in samples from MalariaGEN PV4 dataset_
+- sra_wgs_rearrangement_search.py: Uses MalariaGEN data information with SRA accessions to map samples to P01 reference genome using Hisat2, and runs sra_wgs_flag_search_by_window_final_local.py on resulting sam file to identify possible deletions and duplications
+- sra_wgs_flag_search_by_window_final.py: Iterates through sam file from sra_wgs_rearrangement_search.py and identifies reads with appropriate flag and insert size that are indicative of deletions or tandem duplications
 
 **GATK Analysis**\
 _Calculate fws to determine clonality of samples based on WGS_
