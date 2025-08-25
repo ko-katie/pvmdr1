@@ -1,6 +1,8 @@
 # pvmdr1
 Code used for characterizing pvmdr1 in manuscript: A common DNA deletion altering the 3’UTR of _mdr1_ is associated with reduced mefloquine susceptibility in _Plasmodium vivax_ parasites from Cambodian patients
 
+Code developed using: Hisat2 version 2.2.1, gatk version 4.2.2.0, samtools version 1.9, R version 4.4.2
+
 **Screening for deletions and tandem duplications in Cambodian patient samples**\
 _Screen WGS data from_ P. vivax _patient samples for deletions and tandem duplications of at least 1kb_
 - local_wgs_rearrangement_search.py: Gets paths to paired end sequencing data, maps samples to P01 reference genome using Hisat2, and runs local_wgs_flag_search_by_window_final_local.py on resulting sam file to identify possible deletions and duplications
