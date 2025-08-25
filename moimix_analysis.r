@@ -6,10 +6,10 @@ BiocManager::install("SeqArray")
 library(SeqArray)
 
 #convert vcf.gz file into .gds file
-seqVCF2GDS("/local/fws_working_dir/all_samples_variants_filtered2.vcf.gz", "/local/fws_working_dir/all_samples_variants_filtered2.gds")
+seqVCF2GDS("/path/to/fws_working_dir/all_samples_variants_filtered2.vcf.gz", "/path/to/fws_working_dir/all_samples_variants_filtered2.gds")
 
 #read .gds file into R and check that it matches original VCF file
-samples <- seqOpen("/local/fws_working_dir/all_samples_variants_filtered2.gds")
+samples <- seqOpen("/path/to/fws_working_dir/all_samples_variants_filtered2.gds")
 seqSummary(samples)
 samples.id <- seqGetData(samples, "sample.id")
 
@@ -30,4 +30,4 @@ sum(fws_all < 0.95)
 
 fws_results <- data.frame(fws_all)
 rownames(fws_results) <- samples.id
-write.csv(fws_results, file="local/fws_working_dir/fws_results.csv")
+write.csv(fws_results, file="/path/to/fws_working_dir/fws_results.csv")
