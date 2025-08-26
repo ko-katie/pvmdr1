@@ -26,7 +26,9 @@ _Calculate fws to determine clonality of samples based on WGS_
 - fix_bam_format_slurm.slurm: Used to run fix_bam_format_slurm.sh as array job in SLURM workload manager. Allows fix_bam_format_slurm.sh to run on multiple samples in parallel
 - fix_bam_format_slurm.sh: Reformats BAM files in preparation for GATK and VCFTools analysis, then performs HaplotypeCaller to generate VCF file for sample
 - perform_gatk_analysis.sh: Bash script containing commands to combine outputted VCF files from fix_bam_format_slurm.sh and generate VCF file representing variants between all samples
+- unmasked_intervals.intervals: .intervals file for use with perform_gatk_analysis.sh, contains regions that were not masked in analysis (ie does not belong to multigene family)
 - moimix_analysis: Takes final VCF file from perform_gatk_analysis.sh and calculates FWS of samples
+
 
     Perform analysis by:\
     Change fix_bam_format_slurm.slurm lines 3, 4, and 10 to desired paths to SLURM outputs and with downloaded location of fix_bam_format_slurm.sh script\
