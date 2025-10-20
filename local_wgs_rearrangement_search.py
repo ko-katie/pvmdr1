@@ -64,7 +64,7 @@ for r1_line in r1_samples_file:
             #change to hisat with --disable-splicer
             mapping_start_time = time.time()
             print("perform mapping", flush=True)
-            os.system("/usr/local/packages/hisat2/hisat2 -x /local/projects-t3/SerreDLab-3/kko/Pv_P01_Index/PvivaxP01 -q \
+            os.system("/usr/local/packages/hisat2/hisat2 -x /path/to/PvivaxP01_hisat_index -q \
                 -1 " + r1_line_stripped +  " -2 " + r2_line_stripped + " --max-intronlen 20 -S " + sam_path + " -p 24")
 
             mapping_end_time = time.time()
@@ -77,7 +77,7 @@ for r1_line in r1_samples_file:
             continue
 
         #pass sam file to flag_search_by_window.py script to count flags
-        os.system("samtools view " + sam_path + " | python3 /local/projects-t3/SerreDLab-3/kko/mdr_del_search_dna_whole_genome/flag_search_by_window_final_local.py " + flagged_reads_dir \
+        os.system("samtools view " + sam_path + " | python3 /path/to/flag_search_by_window_final_local.py " + flagged_reads_dir \
                 + " " + sample_name + " " + sam_path + " " + output_file_path + " " + del_dup_bam_files_dir)
 
         #remove sam file
