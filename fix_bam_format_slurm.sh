@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Paths and settings
-WORKING_DIR="/local/projects-t3/SerreDLab-3/kko/mdr_del_search_dna_whole_genome/gatk_polyclonality/fix_bam_files_dir/"  # Directory for fixing BAM files
-SUM_DIR="/local/projects-t3/SerreDLab-3/kko/mdr_del_search_dna_whole_genome/gatk_polyclonality/fix_bam_files_dir/sum_dir"
-LOG_DIR="/local/projects-t3/SerreDLab-3/kko/mdr_del_search_dna_whole_genome/gatk_polyclonality/fix_bam_files_dir/log_dir"
-TMP_DIR="/local/projects-t3/SerreDLab-3/kko/mdr_del_search_dna_whole_genome/gatk_polyclonality/fix_bam_files_dir/tmp"
-BAM_LIST_FILE="/local/projects-t3/SerreDLab-3/kko/mdr_del_search_dna_whole_genome/all_bam_paths.txt"
+WORKING_DIR="/path/to/fix_bam_files_dir/"  # Directory for fixing BAM files
+SUM_DIR="/path/to/fix_bam_files_dir/sum_dir"
+LOG_DIR="/path/to/fix_bam_files_dir/log_dir"
+TMP_DIR="/path/to/fix_bam_files_dir/tmp"
+BAM_LIST_FILE="/path/to/all_bam_paths.txt"
 
 # Create necessary directories
 mkdir -p "$WORKING_DIR"
@@ -45,7 +45,7 @@ if [ -n "$BAM_FILE" ]; then
 
     #run HaplotypeCaller
     VCF_PATH=${WORKING_DIR}${SAMPLE_NAME}_output.g.vcf.gz
-    python3 /usr/local/packages/gatk-4.2.2.0/gatk --java-options "-Xmx4g" HaplotypeCaller -R /local/projects-t3/SerreDLab-3/kko/Pv_P01_Index/PlasmoDB-67_PvivaxP01_Genome.fasta -I $MATE_RG_BAM -L /local/projects-t3/SerreDLab-3/kko/mdr_del_search_dna_whole_genome/gatk_polyclonality/unmasked_regions.intervals -ERC GVCF --dont-use-soft-clipped-bases true -stand-call-conf 20.0 -O $VCF_PATH
+    python3 /usr/local/packages/gatk-4.2.2.0/gatk --java-options "-Xmx4g" HaplotypeCaller -R /path/to/PlasmoDB-67_PvivaxP01_Genome.fasta -I $MATE_RG_BAM -L /path/to/unmasked_regions.intervals -ERC GVCF --dont-use-soft-clipped-bases true -stand-call-conf 20.0 -O $VCF_PATH
 
     echo "Processing completed for $SAMPLE_NAME."
 
