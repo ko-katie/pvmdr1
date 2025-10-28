@@ -1,7 +1,7 @@
 # pvmdr1
 Code used for characterizing pvmdr1 in manuscript: A common DNA deletion altering the 3’UTR of _mdr1_ is associated with reduced mefloquine susceptibility in _Plasmodium vivax_ parasites from Cambodian patients
 
-Code developed using: Hisat2 version 2.2.1, gatk version 4.2.2.0, samtools version 1.9, R version 4.4.2, picard version 2.9.4
+Code developed using: Hisat2 version 2.2.1, gatk version 4.2.2.0, samtools version 1.9, R version 4.4.2, picard version 2.9.4, vcftools version 0.1.15
 
 **Prior to running any screening for deletions and tandem duplications**\
 - Make sure to generate hisat2 index for reference genome using command:
