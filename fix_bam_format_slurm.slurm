@@ -1,6 +1,6 @@
 #!/bin/bash
 
-$WORKING_DIR_PATH="/path/to/working_dir"      # Set to path to working_dir, must match working_dir path used in fix_bam_format_slurm.sh
+WORKING_DIR_PATH="/path/to/working_dir"      # Set to path to working_dir, must match working_dir path used in fix_bam_format_slurm.sh
 
 #SBATCH --job-name=fix_bam_format                     # Job name
 #SBATCH --output=${WORKING_DIR_PATH}/fix_bam.out   # Standard output log
