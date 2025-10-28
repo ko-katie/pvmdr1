@@ -7,6 +7,6 @@
 #SBATCH --array=1-112                       #Number of samples
 
 
-/path/to/mpileup_dir/mpileup_mdr_slurm.sh
+mpileup_mdr_slurm.sh
 
 echo "All samples processed"
