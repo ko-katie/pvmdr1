@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Paths and settings
-WORKING_DIR="/path/to/fix_bam_files_dir/"  # Directory for fixing BAM files
-SUM_DIR="/path/to/fix_bam_files_dir/sum_dir"
-LOG_DIR="/path/to/fix_bam_files_dir/log_dir"
-TMP_DIR="/path/to/fix_bam_files_dir/tmp"
-BAM_LIST_FILE="/path/to/all_bam_paths.txt"
+BAM_LIST_FILE="/path/to/all_bam_paths.txt" # Set path for text file containing all bam files to be processed on individual lines
+WORKING_DIR="/path/to/working_dir"  # Directory for fixing BAM files
+
+SUM_DIR="${WORKING_DIR}/sum_dir"
+LOG_DIR="${WORKING_DIR}/log_dir"
+TMP_DIR="${WORKING_DIR}/tmp"
 
 # Create necessary directories
 mkdir -p "$WORKING_DIR"
