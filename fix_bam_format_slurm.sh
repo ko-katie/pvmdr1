@@ -33,8 +33,8 @@ if [ -n "$BAM_FILE" ]; then
     MATE_RG_BAM=${WORKING_DIR}${SAMPLE_NAME}"_mate_rg.sorted.bam"
 
     #run picard functions to fix bam files
-    java -jar /usr/local/packages/picard/picard.jar FixMateInformation I=$BAM_FILE O=$MATE_BAM tmp_dir=$TMP_DIR
-    java -jar /usr/local/packages/picard/picard.jar AddOrReplaceReadGroups I=$MATE_BAM O=$MATE_RG_BAM RGLB=laneX RGPL=illumina RGPU=NONE RGSM=$SAMPLE_NAME
+    java -jar picard.jar FixMateInformation I=$BAM_FILE O=$MATE_BAM tmp_dir=$TMP_DIR
+    java -jar picard.jar AddOrReplaceReadGroups I=$MATE_BAM O=$MATE_RG_BAM RGLB=laneX RGPL=illumina RGPU=NONE RGSM=$SAMPLE_NAME
 
     # Remove intermediate BAM
     rm $MATE_BAM
@@ -45,7 +45,7 @@ if [ -n "$BAM_FILE" ]; then
 
     #run HaplotypeCaller
     VCF_PATH=${WORKING_DIR}${SAMPLE_NAME}_output.g.vcf.gz
-    python3 /usr/local/packages/gatk-4.2.2.0/gatk --java-options "-Xmx4g" HaplotypeCaller -R /path/to/PlasmoDB-67_PvivaxP01_Genome.fasta -I $MATE_RG_BAM -L /path/to/unmasked_regions.intervals -ERC GVCF --dont-use-soft-clipped-bases true -stand-call-conf 20.0 -O $VCF_PATH
+    python3 gatk --java-options "-Xmx4g" HaplotypeCaller -R PlasmoDB-67_PvivaxP01_Genome.fasta -I $MATE_RG_BAM -L unmasked_regions.intervals -ERC GVCF --dont-use-soft-clipped-bases true -stand-call-conf 20.0 -O $VCF_PATH
 
     echo "Processing completed for $SAMPLE_NAME."
 
