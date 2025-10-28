@@ -67,7 +67,7 @@ for line in samples_file:
             #make 100bp windows from 450000-510000
             mapping_start_time = time.time()
             print("perform mapping", flush=True)
-            os.system("/usr/local/packages/hisat2/hisat2 -x /path/to/PvivaxP01_hisat2_index -f \
+            os.system("hisat2 -x PvivaxP01_hisat2_index -f \
                 --sra-acc " + sample_ena_list + " --max-intronlen 20 -S " + sam_path + " -p 12")
 
             mapping_end_time = time.time()
@@ -81,7 +81,7 @@ for line in samples_file:
 
         #pass sam file to flag_search_by_window.py script to count flags
         
-        os.system("samtools view " + sam_path + " | python3 /path/to/flag_search_by_window_final_sra.py " + flagged_reads_dir \
+        os.system("samtools view " + sam_path + " | python3 flag_search_by_window_final_sra.py " + flagged_reads_dir \
                 + " " + sample_name + " " + sample_ena_list + " " + country + " " + sam_path + " " + output_file_path + " " + del_dup_bam_files_dir)
 
         #remove sam file
