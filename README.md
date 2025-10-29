@@ -19,7 +19,7 @@ Perform analysis by:
   ```
   python3 local_wgs_rearrangement_search.py /path/to/working_directory/ list_of_r1_fastqs.txt list_of_r2_fastqs.txt
   ```
-- /path/to/working_directory/** is the path to the directory where files should be outputted\
+- /path/to/working_directory/ is the path to the directory where files should be outputted\
 
 
 **Screening for _mdr1_ rearrangements from MalariaGEN PV4 Dataset**\
