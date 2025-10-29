@@ -12,7 +12,7 @@ _Screen WGS data from_ P. vivax _patient samples for deletions and tandem duplic
 - local_wgs_rearrangement_search.py: Gets paths to paired end sequencing data, maps samples to P01 reference genome using Hisat2, and runs local_wgs_flag_search_by_window_final_local.py on resulting sam file to identify possible deletions and duplications
 - local_wgs_flag_search_by_window.py: Iterates through sam file from local_wgs_rearrangement_search.py and identifies reads with appropriate flag and insert size that are indicative of deletions or tandem duplications
 
-Perform analysis by:
+Perform analysis:
 - Ensure list_of_r1_fastqs.txt and list_of_r2_fastqs.txt are in current directory
    - /path/to/list_of_r1_fastqs.txt and /path/to/list_of_r2_fastqs.txt should be text files providing the path to fastq.gz files for R1 and R2, respectively, for each sample. Each file should be on a new line, and the samples should be in the same order in both files
 
@@ -39,7 +39,7 @@ _Calculate fws to determine clonality of samples based on WGS_
 - unmasked_intervals.intervals: .intervals file for use with perform_gatk_analysis.sh, contains regions that were not masked in analysis (ie does not belong to multigene family)
 - moimix_analysis: Takes final VCF file from perform_gatk_analysis.sh and calculates FWS of samples
 
-Perform analysis by:
+Perform analysis:
 
 - Set line 4 of fix_bam_format_slurm.sh and line 3 of fix_bam_format_slurm.slurm to path for desired working directory
 - Ensure PlasmoDB-67_PvivaxP01_Genome.fasta, unmasked_regions.intervals, all_bam_paths.txt, and sample_map.txt are in current directory
