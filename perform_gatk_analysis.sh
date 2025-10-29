@@ -14,3 +14,6 @@ python3 gatk VariantFiltration -R PlasmoDB-67_PvivaxP01_Genome.fasta -V all_samp
 
 #run vcftools on filtered variants
 vcftools --vcf all_samples_variants_filtered.vcf --remove-indels --max-alleles 2 --max-missing 0.2 --recode --recode-INFO-all --out all_samples_variants_filtered2
+
+#gzip vcftools output
+gzip all_samples_variants_filtered2.vcf
