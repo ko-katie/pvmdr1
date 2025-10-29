@@ -3,6 +3,8 @@ Code used for characterizing pvmdr1 in manuscript: A common DNA deletion alterin
 
 Code developed using: [Hisat2 version 2.2.1](https://daehwankimlab.github.io/hisat2/download/), [gatk version 4.2.2.0](https://github.com/broadinstitute/gatk/releases), [samtools version 1.9](https://www.htslib.org/download/), [R version 4.4.2](https://cran.rstudio.com/), [picard version 2.9.4](https://broadinstitute.github.io/picard/), [vcftools version 0.1.15](https://sourceforge.net/projects/vcftools/), [slurm version 23.11.6](https://slurm.schedmd.com/) 
 
+**PlasmoDB-67_PvivaxP01_Genome.fasta** reference genome provided to download and gunzip 
+
 ## Prior to running any screening for deletions and tandem duplications
 - Make sure to generate hisat2 index for reference genome using command:
   
