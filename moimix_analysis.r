@@ -4,6 +4,7 @@ BiocManager::install("bahlolab/moimix", build_vignettes = TRUE)
 BiocManager::install("SeqArray")
 
 library(SeqArray)
+library(BiocManager)
 
 #convert vcf.gz file into .gds file
 seqVCF2GDS("all_samples_variants_filtered2.vcf.gz", "all_samples_variants_filtered2.gds")
