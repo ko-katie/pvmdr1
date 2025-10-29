@@ -26,6 +26,8 @@ python3 sra_wgs_rearrangement_search.py /path/to/working_directory/ list_of_r1_f
 ```
 - /path/to/working_directory/ is the path to the directory where files should be outputted
 
+**Output:**
+- Tab delimited text file in which each line contains information for one sample: Sample name, total reads mapped, total deletion flags identified, total duplication flags identified, minimum/maximum/median mapping coverage by 100bp window, minimum/maximum/median deletion flag coverage by 100bp window, list of 100bp windows with at least 3 reads flagged for deletion, and list of 100bp windows with at least 3 reads flagged for duplication
 
 ## Screening for _mdr1_ rearrangements from MalariaGEN PV4 Dataset
 _Screen 60kb region surrounding_ mdr1 _in samples from MalariaGEN PV4 dataset_
@@ -40,6 +42,9 @@ _Screen 60kb region surrounding_ mdr1 _in samples from MalariaGEN PV4 dataset_
 python3 sra_wgs_rearrangement_search.py /path/to/working_directory/ Pv4_samples.txt
 ```
 - /path/to/working_directory/ is the path to the directory where files should be outputted
+
+**Output:**
+- Tab delimited text file in which each line contains information for one sample: Sample name, total reads mapped, total deletion flags identified, total duplication flags identified, minimum/maximum/median mapping coverage by 100bp window, minimum/maximum/median deletion flag coverage by 100bp window, list of 100bp windows with at least 3 reads flagged for deletion, and list of 100bp windows with at least 3 reads flagged for duplication
 
 ## GATK Analysis
 _Calculate fws to determine clonality of samples based on WGS_
@@ -64,6 +69,12 @@ bash perform_gatk_analysis.sh
 ```
 
 - Run moimix_analysis.r using Rstudio
+
+**Output:**
+- Reformatted bam files accepted by gatk
+- all_samples_variants.vcf file containing all variants found in data
+- all_samples_variants_filtered2.vcf containing filtered subset of variants which pass quality filters
+- fws_results.csv file containing fws values determined by moimix
   
 ## Generate mdr1 coding sequence consensus
 _Get consensus sequence of mdr1 coding sequence from WGS of samples_
@@ -81,3 +92,6 @@ _Get consensus sequence of mdr1 coding sequence from WGS of samples_
 ```
 sbatch --mem=16G run_mpileup_mdr_slurm.slurm
 ```
+
+**Output:**
+- Fasta files for each sample containing the mdr1 coding sequence consensus sequence
