@@ -66,7 +66,9 @@ _Get consensus sequence of mdr1 coding sequence from WGS of samples_
 - mpileup_mdr1_slurm.sh: Runs mpileup on region of BAM file pertaining to mdr1 coding sequence, then pipes to mpileup_to_fasta.py
 - mpileup_to_fasta.py: Python script to process VCF file outputted by mpileup and rebuild mdr1 coding sequence consensus
 
-    Perform analysis by:\
-    Change run_mpileup_mdr1_slurm.slurm lines 3 and 4 to desired paths to SLURM output and line 10 to downloaded location of mpileup_mdr1_slurm.sh\
-    Change mpileup_mdr1_slurm.sh line 4 to include path to working directory and line 11 to include path to input file\
-    Input file should be a tab delimited file with each line containing one sample, sample name in first column and path to sample bam file in second column
+Perform analysis:
+
+- Set run_mpileup_mdr1_slurm.slurm line 3 to desired path for working directory and X in line 10 to number of samples to be run
+- Set mpileup_mdr1_slurm.sh line 4 to include path to desired working directory
+- Ensure samples_to_run.txt and PlasmoDB-67_PvivaxP01_Genome.fasta files are in current directory
+   - samples_to_run.txt should be a tab-delimited file with each line containing one sample, sample name in first column and path to sample bam file in second column
