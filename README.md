@@ -5,7 +5,10 @@ Code developed using: [Hisat2 version 2.2.1](https://daehwankimlab.github.io/his
 
 **Prior to running any screening for deletions and tandem duplications**
 - Make sure to generate hisat2 index for reference genome using command:
-- hisat2-build PlasmoDB-67_PvivaxP01_Genome.fasta PvivaxP01_hisat_index
+  
+```
+hisat2-build PlasmoDB-67_PvivaxP01_Genome.fasta PvivaxP01_hisat_index
+```
 
 **Screening for deletions and tandem duplications in Cambodian patient samples**\
 _Screen WGS data from_ P. vivax _patient samples for deletions and tandem duplications of at least 1kb_
