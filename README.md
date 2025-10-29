@@ -72,3 +72,7 @@ Perform analysis:
 - Set mpileup_mdr1_slurm.sh line 4 to include path to desired working directory
 - Ensure samples_to_run.txt and PlasmoDB-67_PvivaxP01_Genome.fasta files are in current directory
    - samples_to_run.txt should be a tab-delimited file with each line containing one sample, sample name in first column and path to sample bam file in second column
+
+```
+sbatch --mem=16G run_mpileup_mdr_slurm.slurm
+```
