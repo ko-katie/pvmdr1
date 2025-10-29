@@ -1,9 +1,9 @@
 # pvmdr1
 Code used for characterizing pvmdr1 in manuscript: A common DNA deletion altering the 3’UTR of _mdr1_ is associated with reduced mefloquine susceptibility in _Plasmodium vivax_ parasites from Cambodian patients
 
-Code developed using: [Hisat2 version 2.2.1](https://daehwankimlab.github.io/hisat2/download/), [gatk version 4.2.2.0](https://github.com/broadinstitute/gatk/releases), [samtools version 1.9](https://www.htslib.org/download/), [R version 4.4.2](https://cran.rstudio.com/), [picard version 2.9.4](https://broadinstitute.github.io/picard/), [vcftools version 0.1.15](https://sourceforge.net/projects/vcftools/)
+Code developed using: [Hisat2 version 2.2.1](https://daehwankimlab.github.io/hisat2/download/), [gatk version 4.2.2.0](https://github.com/broadinstitute/gatk/releases), [samtools version 1.9](https://www.htslib.org/download/), [R version 4.4.2](https://cran.rstudio.com/), [picard version 2.9.4](https://broadinstitute.github.io/picard/), [vcftools version 0.1.15](https://sourceforge.net/projects/vcftools/), [slurm version 23.11.6](https://slurm.schedmd.com/) 
 
-**Prior to running any screening for deletions and tandem duplications**\
+**Prior to running any screening for deletions and tandem duplications**
 - Make sure to generate hisat2 index for reference genome using command:
 - hisat2-build PlasmoDB-67_PvivaxP01_Genome.fasta PvivaxP01_hisat_index
 
@@ -35,12 +35,21 @@ _Calculate fws to determine clonality of samples based on WGS_
 
 
     Perform analysis by:\
-    Change fix_bam_format_slurm.slurm lines 3, 4, and 10 to desired paths to SLURM outputs and with downloaded location of fix_bam_format_slurm.sh script\
-    Change fix_bam_format_slurm.sh lines 4, 5, 6, and 7 to desired paths to SLURM outputs and line 8 to path to a list of bam files to be run\
-      Bam file should contain one path on each line\
-    Change /path/to/sample_map.txt on line 4 of perform_gatk_analysis.sh to sample map as outlined [here](https://gatk.broadinstitute.org/hc/en-us/articles/360036883491-GenomicsDBImport), then run: bash perform_gatk_analysis.sh\
-    Change paths in moimix_analysis.sh to reflect those outputted by perform_gatk_analysis.sh and run to obtain fws values
 
+    Set line 4 of fix_bam_format_slurm.sh and line 3 of fix_bam_format_slurm.slurm to path for desired working directory\
+    Ensure PlasmoDB-67_PvivaxP01_Genome.fasta, unmasked_regions.intervals, all_bam_paths.txt, and sample_map.txt are in current directory\
+      all_bam_paths.txt should contain paths to bam files to be processed, each on a new line\
+      sample_map.txt should be formatted as outlined [here](https://gatk.broadinstitute.org/hc/en-us/articles/360036883491-GenomicsDBImport)\
+    Set X in line 11 of fix_bam_format_slurm.slurm to number of samples in all_bam_paths.txt\
+    Set line 3 of perform_gatk_analysis.sh to desired genomicsdb_workspace for running gatk, should be empty or nonexistent\
+
+    '''
+    sbatch --mem=44G fix_bam_format_slurm.slurm
+    bash perform_gatk_analysis.sh
+    '''
+
+    Run moimix_analysis.r using Rstudio
+  
 **Generate mdr1 coding sequence consensus**\
 _Get consensus sequence of mdr1 coding sequence from WGS of samples_
 - run_mpileup_mdr1_slurm.slurm: Used to run mpileup_mdr1_slurm.sh as array job in SLURM workload manager. Allows mpileup_mdr1_slurm.sh to run on multiple samples in parallel
