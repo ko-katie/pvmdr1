@@ -47,7 +47,7 @@ sbatch --mem=44G fix_bam_format_slurm.slurm
 bash perform_gatk_analysis.sh
 ```
 
-Run moimix_analysis.r using Rstudio
+- Run moimix_analysis.r using Rstudio
   
 **Generate mdr1 coding sequence consensus**\
 _Get consensus sequence of mdr1 coding sequence from WGS of samples_
