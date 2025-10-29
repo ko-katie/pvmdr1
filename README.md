@@ -12,9 +12,15 @@ _Screen WGS data from_ P. vivax _patient samples for deletions and tandem duplic
 - local_wgs_rearrangement_search.py: Gets paths to paired end sequencing data, maps samples to P01 reference genome using Hisat2, and runs local_wgs_flag_search_by_window_final_local.py on resulting sam file to identify possible deletions and duplications
 - local_wgs_flag_search_by_window.py: Iterates through sam file from local_wgs_rearrangement_search.py and identifies reads with appropriate flag and insert size that are indicative of deletions or tandem duplications
 
-  Peform analysis by running: python3 local_wgs_rearrangement_search.py /path/to/working_directory/ /path/to/list_of_r1_fastqs.txt /path/to/list_of_r2_fastqs.txt\
-  **/path/to/working_directory/** is the path to the directory where files should be outputted\
-  **/path/to/list_of_r1_fastqs.txt** and **/path/to/list_of_r2_fastqs.txt** should be text files providing the path to fastq.gz files for R1 and R2, respectively, for each sample. Each file should be on a new line, and the samples should be in the same order in both files.
+Perform analysis by:
+- Ensure list_of_r1_fastqs.txt and list_of_r2_fastqs.txt are in current directory
+   - /path/to/list_of_r1_fastqs.txt and /path/to/list_of_r2_fastqs.txt should be text files providing the path to fastq.gz files for R1 and R2, respectively, for each sample. Each file should be on a new line, and the samples should be in the same order in both files
+
+  ```
+  python3 local_wgs_rearrangement_search.py /path/to/working_directory/ list_of_r1_fastqs.txt list_of_r2_fastqs.txt
+  ```
+- /path/to/working_directory/** is the path to the directory where files should be outputted\
+
 
 **Screening for _mdr1_ rearrangements from MalariaGEN PV4 Dataset**\
 _Screen 60kb region surrounding_ mdr1 _in samples from MalariaGEN PV4 dataset_
