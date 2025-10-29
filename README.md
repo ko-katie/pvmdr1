@@ -33,22 +33,21 @@ _Calculate fws to determine clonality of samples based on WGS_
 - unmasked_intervals.intervals: .intervals file for use with perform_gatk_analysis.sh, contains regions that were not masked in analysis (ie does not belong to multigene family)
 - moimix_analysis: Takes final VCF file from perform_gatk_analysis.sh and calculates FWS of samples
 
+Perform analysis by:\
 
-    Perform analysis by:\
+- Set line 4 of fix_bam_format_slurm.sh and line 3 of fix_bam_format_slurm.slurm to path for desired working directory\
+- Ensure PlasmoDB-67_PvivaxP01_Genome.fasta, unmasked_regions.intervals, all_bam_paths.txt, and sample_map.txt are in current directory\
+  - all_bam_paths.txt should contain paths to bam files to be processed, each on a new line\
+  - sample_map.txt should be formatted as outlined [here](https://gatk.broadinstitute.org/hc/en-us/articles/360036883491-GenomicsDBImport)\
+- Set X in line 11 of fix_bam_format_slurm.slurm to number of samples in all_bam_paths.txt\
+- Set line 3 of perform_gatk_analysis.sh to desired genomicsdb_workspace for running gatk, should be empty or nonexistent\
 
-    Set line 4 of fix_bam_format_slurm.sh and line 3 of fix_bam_format_slurm.slurm to path for desired working directory\
-    Ensure PlasmoDB-67_PvivaxP01_Genome.fasta, unmasked_regions.intervals, all_bam_paths.txt, and sample_map.txt are in current directory\
-      all_bam_paths.txt should contain paths to bam files to be processed, each on a new line\
-      sample_map.txt should be formatted as outlined [here](https://gatk.broadinstitute.org/hc/en-us/articles/360036883491-GenomicsDBImport)\
-    Set X in line 11 of fix_bam_format_slurm.slurm to number of samples in all_bam_paths.txt\
-    Set line 3 of perform_gatk_analysis.sh to desired genomicsdb_workspace for running gatk, should be empty or nonexistent\
+'''
+sbatch --mem=44G fix_bam_format_slurm.slurm
+bash perform_gatk_analysis.sh
+'''
 
-    '''
-    sbatch --mem=44G fix_bam_format_slurm.slurm
-    bash perform_gatk_analysis.sh
-    '''
-
-    Run moimix_analysis.r using Rstudio
+Run moimix_analysis.r using Rstudio
   
 **Generate mdr1 coding sequence consensus**\
 _Get consensus sequence of mdr1 coding sequence from WGS of samples_
