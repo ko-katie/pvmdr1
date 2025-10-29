@@ -1,9 +1,10 @@
 # !/usr/bin/env bash
 
+#set path to genomicsdb_workspace
 genomicsdb_workspace_path="/path/to/genomicsdb_workspace/"
 
 #run GenomicsDBImport to combine individual VCF files listed in sample_map.txt, mask multigene families based on unmasked_regions.intervals
-python3 gatk GenomicsDBImport --sample-name-map sample_map.txt --genomicsdb-workspace-path genomicsdb_workspace/ --intervals unmasked_regions.intervals --batch-size 50
+python3 gatk GenomicsDBImport --sample-name-map sample_map.txt --genomicsdb-workspace-path ${genomicsdb_workspace_path} --intervals unmasked_regions.intervals --batch-size 50
 
 #finish combining files into all_samples_variants.output
 python3 gatk GenotypeGVCFs -R PlasmoDB-67_PvivaxP01_Genome.fasta -V /gendb:///${genomicsdb_workspace_path} -O all_samples_variants.vcf
