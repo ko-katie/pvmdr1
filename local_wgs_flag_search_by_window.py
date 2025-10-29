@@ -13,7 +13,7 @@ def update_flag_freq_by_window_dict(flag_freq_by_window_dict, flag_freq):
 
     return flag_freq_by_window_dict
 
-#determine window of read by doing floor of (read position / 1000)
+#determine window of read by doing floor of (read position / 100)
 def determine_chromosome_window(chr, read_pos):
 
     window = math.floor(int(read_pos)/100)
