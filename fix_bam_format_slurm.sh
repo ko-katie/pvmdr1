@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Paths and settings
-BAM_LIST_FILE="/path/to/all_bam_paths.txt" # Set path for text file containing all bam files to be processed on individual lines
 WORKING_DIR="/path/to/working_dir"  # Directory for fixing BAM files
 
 SUM_DIR="${WORKING_DIR}/sum_dir"
@@ -13,6 +12,8 @@ mkdir -p "$WORKING_DIR"
 mkdir -p "$SUM_DIR"
 mkdir -p "$LOG_DIR"
 mkdir -p "$TMP_DIR"
+
+BAM_LIST_FILE="all_bam_paths.txt"
 
 # Get the subfolder name from the corresponding line in BAM_LIST_FILE
 BAM_FILE=$(sed "${SLURM_ARRAY_TASK_ID}q;d" $BAM_LIST_FILE)
