@@ -3,6 +3,8 @@ Code used for characterizing pvmdr1 in manuscript: A common DNA deletion alterin
 
 Code developed using: [Hisat2 version 2.2.1](https://daehwankimlab.github.io/hisat2/download/), [gatk version 4.2.2.0](https://github.com/broadinstitute/gatk/releases), [samtools version 1.9](https://www.htslib.org/download/), [R version 4.4.2](https://cran.rstudio.com/), [picard version 2.9.4](https://broadinstitute.github.io/picard/), [vcftools version 0.1.15](https://sourceforge.net/projects/vcftools/), [slurm version 23.11.6](https://slurm.schedmd.com/) 
 
+Download time for code: < 5 minutes
+
 **PlasmoDB-67_PvivaxP01_Genome.fasta** reference genome provided to download and gunzip 
 
 ## Prior to running any screening for deletions and tandem duplications
@@ -11,11 +13,15 @@ Code developed using: [Hisat2 version 2.2.1](https://daehwankimlab.github.io/his
 ```
 hisat2-build PlasmoDB-67_PvivaxP01_Genome.fasta PvivaxP01_hisat_index
 ```
+- WGS and RNA-seq data used in this study can be accessed on SRA and used to run code
+  - WGS Bioproject: PRJNA1310200
+  - RNA-seq Bioproject: PRJNA1305352
 
 ## Screening for deletions and tandem duplications in Cambodian patient samples
 _Screen WGS data from_ P. vivax _patient samples for deletions and tandem duplications of at least 1kb_
 - local_wgs_rearrangement_search.py: Gets paths to paired end sequencing data, maps samples to P01 reference genome using Hisat2, and runs local_wgs_flag_search_by_window_final_local.py on resulting sam file to identify possible deletions and duplications
 - local_wgs_flag_search_by_window.py: Iterates through sam file from local_wgs_rearrangement_search.py and identifies reads with appropriate flag and insert size that are indicative of deletions or tandem duplications
+- Runtime: Approximately 2-3 hours per sample
 
 **Perform analysis:**
 - Ensure list_of_r1_fastqs.txt and list_of_r2_fastqs.txt are in current directory
@@ -33,6 +39,7 @@ python3 sra_wgs_rearrangement_search.py /path/to/working_directory/ list_of_r1_f
 _Screen 60kb region surrounding_ mdr1 _in samples from MalariaGEN PV4 dataset_
 - sra_wgs_rearrangement_search.py: Uses MalariaGEN data information with SRA accessions to map samples to P01 reference genome using Hisat2, and runs sra_wgs_flag_search_by_window_final_local.py on resulting sam file to identify possible deletions and duplications
 - sra_wgs_flag_search_by_window_final.py: Iterates through sam file from sra_wgs_rearrangement_search.py and identifies reads with appropriate flag and insert size that are indicative of deletions or tandem duplications
+- Runtime: Approximately 2-3 hours per sample
 
 **Perform analysis:**
 
@@ -53,6 +60,7 @@ _Calculate fws to determine clonality of samples based on WGS_
 - perform_gatk_analysis.sh: Bash script containing commands to combine outputted VCF files from fix_bam_format_slurm.sh and generate VCF file representing variants between all samples
 - unmasked_intervals.intervals: .intervals file for use with perform_gatk_analysis.sh, contains regions that were not masked in analysis (ie does not belong to multigene family)
 - moimix_analysis: Takes final VCF file from perform_gatk_analysis.sh and calculates FWS of samples
+- Runtime: approximately 2-3 days
 
 **Perform analysis:**
 
@@ -81,6 +89,7 @@ _Get consensus sequence of mdr1 coding sequence from WGS of samples_
 - run_mpileup_mdr1_slurm.slurm: Used to run mpileup_mdr1_slurm.sh as array job in SLURM workload manager. Allows mpileup_mdr1_slurm.sh to run on multiple samples in parallel
 - mpileup_mdr1_slurm.sh: Runs mpileup on region of BAM file pertaining to mdr1 coding sequence, then pipes to mpileup_to_fasta.py
 - mpileup_to_fasta.py: Python script to process VCF file outputted by mpileup and rebuild mdr1 coding sequence consensus
+- Runtime: approximately 30 minutes
 
 **Perform analysis:**
 
